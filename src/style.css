@@ -9,7 +9,7 @@ html {
 *, :before, :after {
     box-sizing: inherit;
 
-    /* outline: 1px solid rgb(255 0 0 / 0.25); */
+    outline: 1px solid rgb(255 0 0 / 0.25);
 }
 
 body {
@@ -21,7 +21,7 @@ body {
     grid-template-columns: 1fr 20rem;
 
     --section-border: 0.1rem solid currentColor;
-    --section-shadow: 0 0 1rem rgb(0 0 0 / 0.1);t
+    --section-shadow: 0 0 1rem rgb(0 0 0 / 0.1);
 }
 
 body > section {
@@ -99,6 +99,7 @@ body > section {
 }
 /* #endregion */
 
+/* #region Sidebar kanan */
 #rightPart {
     grid-row: 1;
     grid-column: 2;
@@ -108,15 +109,18 @@ body > section {
     border-left: var(--section-border);
     box-shadow: var(--section-shadow);
     z-index: 2;
-
-    display: flex;
-    flex-direction: column;
 }
 
 #stackOfAppliedTransformations {
     overflow-y: auto;
     max-height: 15rem;
 }
+
+#resetAppliedTransformations {
+    display: block;
+    margin: 0 auto;
+}
+/* #endregion */
 
 /* #region Kontrol transformasi */
 #bottomPart {
@@ -151,11 +155,7 @@ body > section {
 /* #endregion */
 
 .no-transformations-applied-helper-text {
-    /* display: block; */
     list-style: "\274C   ";
-
-    /* font-style: italic; */
-    /* color: gray; */
     opacity: 0.5;
 }
 .no-transformations-applied-helper-text:not(:only-child) {

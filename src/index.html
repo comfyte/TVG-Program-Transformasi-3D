@@ -39,6 +39,7 @@
                     Silakan terapkan satu atau beberapa transformasi dari sisi bawah antarmuka.
                 </li>
             </ol>
+            <button type="button" id="resetAppliedTransformations">Reset</button>
         </section>
     </section>
 
@@ -117,27 +118,57 @@
         </fieldset>
 
         <fieldset>
-            <legend><i>Shearing</i> (<i>Skew</i>)</legend>
+            <legend><i>Shearing</i> XY</legend>
 
             <div>
-                <label for="SkewX">X:</label>
-                <input type="number" id="SkewX" value='0'>
+                <label for="shearXY_X">X:</label>
+                <input type="number" id="shearXY_X" value='0'>
                 <span>px</span>
             </div>
 
             <div>
-                <label for="SkewY">Y:</label>
-                <input type="number" id="SkewY" value='0'>
+                <label for="shearXY_Y">Y:</label>
+                <input type="number" id="shearXY_Y" value='0'>
+                <span>px</span>
+            </div>
+
+            <button type="button" id="applyShearXY">Terapkan</button>
+        </fieldset>
+
+        <fieldset>
+            <legend><i>Shearing</i> XZ</legend>
+
+            <div>
+                <label for="shearXZ_X">X:</label>
+                <input type="number" id="shearXZ_X" value='0'>
                 <span>px</span>
             </div>
 
             <div>
-                <label for="SkewZ">Z:</label>
-                <input type="number" id="SkewZ" value='0'>
+                <label for="shearXZ_Z">Z:</label>
+                <input type="number" id="shearXZ_Z" value='0'>
                 <span>px</span>
             </div>
 
-            <button type="button" id="applySkew">Terapkan</button>
+            <button type="button" id="applyShearXZ">Terapkan</button>
+        </fieldset>
+
+        <fieldset>
+            <legend><i>Shearing</i> YZ</legend>
+
+            <div>
+                <label for="shearYZ_Y">Y:</label>
+                <input type="number" id="shearYZ_Y" value='0'>
+                <span>px</span>
+            </div>
+
+            <div>
+                <label for="shearYZ_Z">Z:</label>
+                <input type="number" id="shearYZ_Z" value='0'>
+                <span>px</span>
+            </div>
+
+            <button type="button" id="applyShearYZ">Terapkan</button>
         </fieldset>
     </body>
 

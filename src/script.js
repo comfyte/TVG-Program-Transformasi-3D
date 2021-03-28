@@ -1,7 +1,6 @@
 const sampleCube = document.getElementById("cube");
 const cubeDepthOffset = window.getComputedStyle(sampleCube).getPropertyValue("--transform-depth-offset");
-// const cubeDepthOffset = sampleCube.getPropert
-const appliedTransformations = [];
+let appliedTransformations = [];
 
 // Fungsi general untuk menerapkan matriks transformasi ke elemen kubus sampel
 function applyTransformation({ description, matrix }) {
@@ -55,7 +54,6 @@ function translate() {
 
 // Fungsi rotasi
 function rotate() {
-
     return {
         description: ``,
         matrix: [
@@ -85,15 +83,45 @@ function scale() {
 }
 
 // Fungsi shearing
-function shear() {
+function shearXY() {
+    const x = getValueById("shearXY_X");
+    const y = getValueById("shearXY_Y");
+
+    return {
+        description: `Shear XY (${x}px, ${y}px)`,
+        matrix: [
+            [1, 0, x, 0],
+            [0, 1, y, 0],
+            [0, 0, 1, 0],
+            [0, 0, 0, 1]
+        ]
+    }
+}
+function shearXZ() {
+    const x = getValueById("shearXZ_X");
+    const z = getValueById("shearXZ_Z");
     
     return {
-        description: ``,
+        description: `Shear XZ (${x}px, ${z}px)`,
         matrix: [
-            [],
-            [],
-            [],
-            []
+            [x, 0, 0, 0],
+            [0, 1, 0, 0],
+            [z, 0, 1, 0],
+            [0, 0, 0, 1]
+        ]
+    }
+}
+function shearYZ() {
+    const y = getValueById("shearYZ_Y");
+    const z = getValueById("shearYZ_Z");
+    
+    return {
+        description: `Shear YZ (${y}px, ${z}px)`,
+        matrix: [
+            [1, 0, 0, 0],
+            [0, y, 0, 0],
+            [0, z, 1, 0],
+            [0, 0, 0, 1]
         ]
     }
 }
@@ -109,4 +137,20 @@ function bind(buttonId, transformationFunction) {
 bind("applyTranslate", translate);
 bind("applyRotate"   , rotate);
 bind("applyScale"    , scale);
-bind("applySkew"     , shear);
+bind("applyShearXY"  , shearXY);
+bind("applyShearXZ"  , shearXZ);
+bind("applyShearYZ"  , shearYZ);
+
+// Fungsi untuk me-reset seluruh transformasi yang berlaku
+function resetAllAppliedTransformations() {
+    sampleCube.style.transform = cubeDepthOffset;
+    appliedTransformations = [];
+
+    // Hapus seluruh item yang ada di daftar transformasi yang diterapkan
+    const stackOfAppliedTransformations = document.getElementById("stackOfAppliedTransformations");
+    const transformationsList = stackOfAppliedTransformations.querySelectorAll(":not(.no-transformations-applied-helper-text)");
+    transformationsList.forEach(element => {
+        element.remove();
+    });
+}
+document.getElementById("resetAppliedTransformations").addEventListener("click", resetAllAppliedTransformations);
