@@ -55,14 +55,17 @@ function translate() {
 
 // Fungsi rotasi
 function rotate() {
+    const x = getValueById("RotationX");
+    const y = getValueById("RotationY");
+    const z = getValueById("RotationZ");
 
     return {
-        description: ``,
+        description: `Rotasi (${x}rad, ${y}rad, ${z}rad)`,
         matrix: [
-            [],
-            [],
-            [],
-            []
+            [1 0 0 0],
+            [0 Math.cos(x) Math.sin(-x) 0],
+            [0 Math.sin(x) Math.cos(x) 0],
+            [0 0 0 1]
         ]
     }
 }
