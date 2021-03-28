@@ -54,13 +54,11 @@ function translate() {
 }
 
 // Fungsi rotasi
-function rotate() {
+function rotateX() {
     const x = getValueById("RotationX");
-    const y = getValueById("RotationY");
-    const z = getValueById("RotationZ");
-
+    
     return {
-        description: `Rotasi (${x}rad, ${y}rad, ${z}rad)`,
+        description: `Rotasi (${x}rad) pada sumbu x`,
         matrix: [
             [1 0 0 0],
             [0 Math.cos(x) Math.sin(-x) 0],
@@ -69,6 +67,34 @@ function rotate() {
         ]
     }
 }
+
+function rotateY() {
+    const y = getValueById("RotationY');
+
+    return {
+        description: 'Rotasi (${y}rad) pada sumbu y',
+        matrix: [
+            [Math.cos(y) 0 Math.sin(y) 0],
+            [0 1 0 0],
+            [0 Math.sin(-y) Math.cos(y) 0],
+            [0 0 0 1]
+        ]
+    }
+}  
+
+function rotateZ() {
+    const z = getValueById("RotationZ');
+
+    return {
+        description: 'Rotasi (${z}rad) pada sumbu z',
+        matrix: [
+            [Math.cos(z) Math.sin(-z) 0 0],
+            [Math.sin(z) Math.cos(z) 0 0],
+            [0 0 1 0],
+            [0 0 0 1]
+        ]
+    }
+}  
 
 // Fungsi penskalaan
 function scale() {
@@ -110,6 +136,8 @@ function bind(buttonId, transformationFunction) {
 }
 
 bind("applyTranslate", translate);
-bind("applyRotate"   , rotate);
+bind("applyRotateX"  , rotateX);
+bind("applyRotateY"  , rotateY);
+bind("applyRotateZ"  , rotateZ);
 bind("applyScale"    , scale);
 bind("applySkew"     , shear);
