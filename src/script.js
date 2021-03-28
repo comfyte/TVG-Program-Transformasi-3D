@@ -37,9 +37,9 @@ function getValueById(id) {
 //#region Fungsi-fungsi transformasi
 // Fungsi translasi
 function translate() {
-    const x = getValueById("translateX");
-    const y = getValueById("translateY");
-    const z = getValueById("translateZ");
+    const x = getValueById("translateX") || 0;
+    const y = getValueById("translateY") || 0;
+    const z = getValueById("translateZ") || 0;
 
     return {
         description: `Translasi (${x}px, ${y}px, ${z}px)`,
@@ -54,7 +54,7 @@ function translate() {
 
 // Fungsi rotasi
 function rotateX() {
-    const x = getValueById("RotationX");
+    const x = getValueById("RotationX") || 0;
     
     return {
         description: `Rotasi (${x}rad) pada sumbu x`,
@@ -68,7 +68,7 @@ function rotateX() {
 }
 
 function rotateY() {
-    const y = getValueById("RotationY");
+    const y = getValueById("RotationY") || 0;
 
     return {
         description: `Rotasi (${y}rad) pada sumbu y`,
@@ -82,7 +82,7 @@ function rotateY() {
 }  
 
 function rotateZ() {
-    const z = getValueById("RotationZ");
+    const z = getValueById("RotationZ") || 0;
 
     return {
         description: `Rotasi (${z}rad) pada sumbu z`,
@@ -97,9 +97,9 @@ function rotateZ() {
 
 // Fungsi penskalaan
 function scale() {
-    const x = getValueById("scaleX");
-    const y = getValueById("scaleY");
-    const z = getValueById("scaleZ");
+    const x = getValueById("scaleX") || 1;
+    const y = getValueById("scaleY") || 1;
+    const z = getValueById("scaleZ") || 1;
     
     return {
         description: `Skala (${x}x, ${y}x, ${z}x)`,
@@ -114,8 +114,8 @@ function scale() {
 
 // Fungsi shearing
 function shearXY() {
-    const x = getValueById("shearXY_X");
-    const y = getValueById("shearXY_Y");
+    const x = getValueById("shearXY_X") || 0;
+    const y = getValueById("shearXY_Y") || 0;
 
     return {
         description: `Shear XY (${x}px, ${y}px)`,
@@ -128,8 +128,8 @@ function shearXY() {
     }
 }
 function shearXZ() {
-    const x = getValueById("shearXZ_X");
-    const z = getValueById("shearXZ_Z");
+    const x = getValueById("shearXZ_X") || 0;
+    const z = getValueById("shearXZ_Z") || 0;
     
     return {
         description: `Shear XZ (${x}px, ${z}px)`,
@@ -142,8 +142,8 @@ function shearXZ() {
     }
 }
 function shearYZ() {
-    const y = getValueById("shearYZ_Y");
-    const z = getValueById("shearYZ_Z");
+    const y = getValueById("shearYZ_Y") || 0;
+    const z = getValueById("shearYZ_Z") || 0;
     
     return {
         description: `Shear YZ (${y}px, ${z}px)`,
